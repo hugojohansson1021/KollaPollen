@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pollen Forecast</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Välj region och pollen typ </h1>
+<!-- Dropdown for regions -->
+<select id="regions-dropdown">
+  <option value="">Select Region</option>
+  <!-- Options will be populated by JavaScript -->
+</select>
+
+<!-- Dropdown for pollen types -->
+<select id="pollen-types-dropdown">
+  <option value="">Select Pollen Type</option>
+  <!-- Options will be populated by JavaScript -->
+</select>
+
+<h2>Pollen nivåerna mäts på en skalla mellan 0 - 8</h2>
+<!-- Button to trigger the forecast search -->
+<button id="search-button">Get Forecast</button>
+
+<!-- Section to display forecast results -->
+<div id="forecast-results">
+  <!-- Forecast data will be displayed here -->
+</div>
+
+<script>
+// JavaScript to populate dropdowns and handle search
+document.addEventListener('DOMContentLoaded', function() {
+  const regionsDropdown = document.getElementById('regions-dropdown');
+  const pollenTypesDropdown = document.getElementById('pollen-types-dropdown');
+
+  // Fetch and populate regions
+  fetch('https://api.pollenrapporten.se/v1/regions')
+    .then(response => response.json())
+    .then(data => {
+      data.items.forEach(region => {
+        const option = document.createElement('option');
+        option.value = region.id;
+        option.textContent = region.name;
+        regionsDropdown.appendChild(option);
+      });
+    }).catch(error => console.error('Error fetching regions:', error));
+
+  // Fetch and populate pollen types
+  fetch('https://api.pollenrapporten.se/v1/pollen-types')
+    .then(response => response.json())
+    .then(data => {
+      data.items.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type.id;
+        option.textContent = type.name;
+        pollenTypesDropdown.appendChild(option);
+      });
+    }).catch(error => console.error('Error fetching pollen types:', error));
+
+
+    
+  // Handle forecast search on button click
+  const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', function() {
+  const selectedRegion = regionsDropdown.value;
+  const selectedPollenType = pollenTypesDropdown.value;
+
+  if (selectedRegion && selectedPollenType) {
+    const forecastEndpoint = `https://api.pollenrapporten.se/v1/forecasts?region_id=${selectedRegion}&pollen_id=${selectedPollenType}&current=true`;
+    fetch(forecastEndpoint)
+      .then(response => response.json())
+      .then(data => {
+        const resultsDiv = document.getElementById('forecast-results');
+        resultsDiv.innerHTML = ''; // Clear previous results
+
+        if (data && data.items && data.items.length > 0) {
+          const forecastItem = data.items[0]; // Assuming we are interested in the first forecast
+          
+          // Find the latest level from the levelSeries array
+          if (forecastItem.levelSeries && forecastItem.levelSeries.length > 0) {
+            // It's unclear how to determine the "latest" level, so I'll assume we take the first
+            const latestLevel = forecastItem.levelSeries[0].level; // This might not be correct
+
+            resultsDiv.innerHTML = `<p>Pollen nivå för ${latestLevel}.</p>`;
+          } else {
+            resultsDiv.innerHTML = '<p>Det finns ingen aktuell pollen nivå att visa.</p>';
+          }
+        } else {
+          resultsDiv.innerHTML = '<p>Ingen aktuell pollenprognos är tillgänglig.</p>';
+        }
+      }).catch(error => {
+        console.error('Error fetching forecast:', error);
+        resultsDiv.innerHTML = '<p>Kunde inte hämta prognosen, försök igen senare.</p>';
+      });
+  } else {
+    alert('Vänligen välj både en region och en pollen typ.');
+  }
+});
+});
+</script>
+</body>
+</html>
+
