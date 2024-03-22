@@ -13,10 +13,13 @@ jobs:
       with:
         server: linux316.unoeuro.com
         username: kollapollen.se
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /public_html/
+        password: ${{ secrets.FTP_PASSWORD }}  # Store your FTP password as a secret in your GitHub repository settings
+        local-dir: ./  # Set this to the directory in your repo that you want to upload
+        server-dir: /public_html/  # Set this to the target directory on your server
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/**
           fileToExclude.txt
+    env:
+      FTP_PASSIVE: true  # Using passive mode, recommended for most FTP servers
