@@ -14,8 +14,7 @@ jobs:
         server: linux316.unoeuro.com
         username: kollapollen.se
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir:   # Set this to the directory in your repo that you want to upload
-        server-dir: /html_public/  # Set this to the target directory on your server
+        server-dir: /public_html/
         exclude: |
           **/.git*
           **/.git*/**
