@@ -1,106 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pollen Forecast</title>
-<link rel="stylesheet" href="style.css">
+
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolla Pollen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="icons8-modern-server-computer-stacked-on-each-other-tal-revivo-green-32.png">
+
+
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1349KJRPEX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1349KJRPEX');
+</script>
+
+
+
 </head>
+
+
+
+
+
 <body>
+    <!-- Navbar-->
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="#home" id="navbar_logo">KollaPollen.se</a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
 
-    <h1>Välj region och pollen typ </h1>
-<!-- Dropdown for regions -->
-<select id="regions-dropdown">
-  <option value="">Select Region</option>
-  <!-- Options will be populated by JavaScript -->
-</select>
+                <li class="navbar_item">
+                    <a href="#home" class="navbar_links" id="home-page"> Startsida </a>
+                </li> 
 
-<!-- Dropdown for pollen types -->
-<select id="pollen-types-dropdown">
-  <option value="">Select Pollen Type</option>
-  <!-- Options will be populated by JavaScript -->
-</select>
+                <li class="navbar_item">
+                    <a href="#tjanster" class="navbar_links" id="tjanster-page">Hassel</a>
+                </li>
 
-<h2>Pollen nivåerna mäts på en skalla mellan 0 - 8</h2>
-<!-- Button to trigger the forecast search -->
-<button id="search-button">Get Forecast</button>
+                <li class="navbar_item">
+                    <a href="#priser" class="navbar_links" id="priser-page">Al</a>
+                </li>
 
-<!-- Section to display forecast results -->
-<div id="forecast-results">
-  <!-- Forecast data will be displayed here -->
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">älg/Viden</a>
+                </li>
+
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">Alm</a>
+                </li>
+
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">Björk</a>
+                </li>
+
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">Bok</a>
+                </li>
+
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">Ek</a>
+                </li>
+
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">Gräs</a>
+                </li>
+
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">Gråbok</a>
+                </li>
+
+                <li class="navbar_item">
+                  <a href="#priser" class="navbar_links" id="priser-page">Mal</a>
+                </li>
+
+                
+
+            </ul>
+        </div>
+
+
+    </nav>
+
+
+    <!--Hero section-->
+<div class="hero" id="home">
+  <div class="main_product">
+      <div class="main_container_product">
+        
+          <h1>Kolla pollen nivåerna i din region</h1>
+          <p>Välj Region</p>
+          <h4>Pollen nivå mäts mellan 0 lågt  - 8 högt </h4>
+          
+          <!-- Dropdown for regions -->
+          <select id="regionSelector">
+            <option value="">Välj en region</option>
+            <!-- Regioner laddas här -->
+        </select>
+    
+        <div id="pollenInfo">
+            <!-- Polleninformation visas här -->
+        </div>
+        <p>Datan uppdateras regelbundet varje dag för att visa exakt data</p>
+        <br>
+        <br>
+        <br>
+        
+        <h3>Pollen Kalender</h3>
+      
+        <img src="/images/pollenkalendern.png" alt="" style="width: 100%; display: block; margin-left: auto; margin-right: auto;">
+
+
+
+
+      </div>
+  </div>
 </div>
 
-<script>
-// JavaScript to populate dropdowns and handle search
-document.addEventListener('DOMContentLoaded', function() {
-  const regionsDropdown = document.getElementById('regions-dropdown');
-  const pollenTypesDropdown = document.getElementById('pollen-types-dropdown');
 
-  // Fetch and populate regions
-  fetch('https://api.pollenrapporten.se/v1/regions')
-    .then(response => response.json())
-    .then(data => {
-      data.items.forEach(region => {
-        const option = document.createElement('option');
-        option.value = region.id;
-        option.textContent = region.name;
-        regionsDropdown.appendChild(option);
-      });
-    }).catch(error => console.error('Error fetching regions:', error));
 
-  // Fetch and populate pollen types
-  fetch('https://api.pollenrapporten.se/v1/pollen-types')
-    .then(response => response.json())
-    .then(data => {
-      data.items.forEach(type => {
-        const option = document.createElement('option');
-        option.value = type.id;
-        option.textContent = type.name;
-        pollenTypesDropdown.appendChild(option);
-      });
-    }).catch(error => console.error('Error fetching pollen types:', error));
 
+    <!-- section vad gör vi?-->
+    
+        <div class="main_container_product" id="tjanster">
+
+            <h1> Olika pollen slag </h1>
+            <br>
+            <br>
+            <h4> Hassel </h4>
+            <img src="/images/hassel.png" alt="" style="width: 100%; display: block; margin-left: auto; margin-right: auto;">
+
+            <br>
+            <p>Hassel blommar tidigt på året, före tussilagos gula blomning vid vägkanter. Dess pollen sprids tidigt, vilket påverkar de med allergi mot björkpollen, då dessa grupper ofta är känsliga för hasselpollen också. Dock är höga halter av hasselpollen inte vanligt förekommande.</p>
+            <br>
+            <p>Hassel, känd vetenskapligt som Corylus avellana, är en naturlig del av lövskogar i södra Sverige och kan även hittas i granskogar med rik undervegetation i Svealand och längs kusten i södra Norrland. Denna växt är framför allt berömd för sina näringsrika nötter, som är populära både som julbordets dekoration och som en betydande källa till föda för vilda djur och fåglar.</p>
+      
+            <br>
+            
+
+              
+              
+              <br>
+              <h4> AL </h4>
+              <img src="/images/al_pollen.png" alt="" style="width: 100%; display: block; margin-left: auto; margin-right: auto;">
+  
+              <br>
+              <p>Många är bekanta med alen, som ofta växer längs vattendrag och känns igen på dess små, unika kottar. Det är mindre känt att träet från al har en distinkt orange ton och att den ingår i samma växtfamilj som björken.</p>
+              <br>
+              <p>Sverige är hem för två alarter, en mer sydligt förekommande och en annan som är vanligare i norr. Klibbalen, Alnus glutinosa, trivs i närheten av vatten och växer ofta vid olika sorters vattenstränder. Gråalen, Alnus incana, återfinns även i något torrare miljöer, som en del av blandade barrskogar.</p>
+              <br>
+          
+  
+  
+  
+        </div>
+    
+
+    <!--Priser section-->
+
+    <!--   
+    <div class="priser" id="priser">
+        <h1>Artiklar</h1>
+        <div class="priser_wrapper">
+
+            <div class="priser_card">
+                <h2>pollen</h2>
+                <p></p>
+                <div class="priser_btn"><a href=""><button>Se </button></div></a>
+            </div>
+
+
+            <div class="priser_card">
+                <h2>Artikel om pollen</h2>
+                <p></p>
+                <div class="priser_btn"><a href=""><button>Se artikel</button></div></a>
+            </div>
+
+
+            <div class="priser_card">
+                <h2>Artikel</h2>
+                <p></p>
+                <div class="priser_btn"><a href=""><button>Se</button></div></a>
+            </div>
+
+
+        </div>
+    </div>  
+   -->
 
     
-  // Handle forecast search on button click
-  const searchButton = document.getElementById('search-button');
-searchButton.addEventListener('click', function() {
-  const selectedRegion = regionsDropdown.value;
-  const selectedPollenType = pollenTypesDropdown.value;
 
-  if (selectedRegion && selectedPollenType) {
-    const forecastEndpoint = `https://api.pollenrapporten.se/v1/forecasts?region_id=${selectedRegion}&pollen_id=${selectedPollenType}&current=true`;
-    fetch(forecastEndpoint)
-      .then(response => response.json())
-      .then(data => {
-        const resultsDiv = document.getElementById('forecast-results');
-        resultsDiv.innerHTML = ''; // Clear previous results
+    
+     <!-- Footer Section -->
 
-        if (data && data.items && data.items.length > 0) {
-          const forecastItem = data.items[0]; // Assuming we are interested in the first forecast
+
+     <div class="footer__container">
+        
+      <p class="website__rights">© KollaPollen.se  .All rights reserved</p>
+        </div>
+
+
+
+        
           
-          // Find the latest level from the levelSeries array
-          if (forecastItem.levelSeries && forecastItem.levelSeries.length > 0) {
-            // It's unclear how to determine the "latest" level, so I'll assume we take the first
-            const latestLevel = forecastItem.levelSeries[0].level; // This might not be correct
+            
 
-            resultsDiv.innerHTML = `<p>Pollen nivå för ${latestLevel}.</p>`;
-          } else {
-            resultsDiv.innerHTML = '<p>Det finns ingen aktuell pollen nivå att visa.</p>';
-          }
-        } else {
-          resultsDiv.innerHTML = '<p>Ingen aktuell pollenprognos är tillgänglig.</p>';
-        }
-      }).catch(error => {
-        console.error('Error fetching forecast:', error);
-        resultsDiv.innerHTML = '<p>Kunde inte hämta prognosen, försök igen senare.</p>';
-      });
-  } else {
-    alert('Vänligen välj både en region och en pollen typ.');
-  }
-});
-});
-</script>
+<script src="app.js"></script>    
 </body>
 </html>
-
