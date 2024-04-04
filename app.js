@@ -81,6 +81,17 @@ const highlightMenu = () => {
     const homeMenu = document.querySelector('#home-page');
     const aboutMenu = document.querySelector('#tjanster-page');
     const servicesMenu = document.querySelector('#priser-page');
+
+    const algMenu = document.querySelector('#alg-page');
+    const almMenu = document.querySelector('#alm-page');
+    const bjorkMenu = document.querySelector('#bjork-page');
+    const bokMenu = document.querySelector('#bok-page');
+    const ekMenu = document.querySelector('#ek-page');
+    const grasMenu = document.querySelector('#gras-page');
+    const graboMenu = document.querySelector('#graabo-page');
+    const malMenu = document.querySelector('#mal-page');
+
+    
     let scrollPos = window.scrollY;
     // console.log(scrollPos);
   
@@ -89,12 +100,20 @@ const highlightMenu = () => {
       homeMenu.classList.add('highlight');
       aboutMenu.classList.remove('highlight');
       return;
-    } else if (window.innerWidth > 960 && scrollPos < 1400) {
+    } 
+    else if (window.innerWidth > 960 && scrollPos < 1400) {
       aboutMenu.classList.add('highlight');
       homeMenu.classList.remove('highlight');
       servicesMenu.classList.remove('highlight');
       return;
-    } else if (window.innerWidth > 960 && scrollPos < 2345) {
+    }
+    else if (window.innerWidth > 1400 && scrollPos < 1900) {
+        aboutMenu.classList.add('highlight');
+        homeMenu.classList.remove('highlight');
+        servicesMenu.classList.remove('highlight');
+        return;
+      }  
+    else if (window.innerWidth > 960 && scrollPos < 2345) {
       servicesMenu.classList.add('highlight');
       aboutMenu.classList.remove('highlight');
       return;

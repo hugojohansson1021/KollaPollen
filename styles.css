@@ -55,14 +55,16 @@
 }
 
 .navbar_links{
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 75px;
-    text-decoration: none;
-    height: 100%;
-    transition: all 0.3s ease;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / antal_länkar); /* Dela upp bredden jämnt mellan länkarna */
+  text-decoration: none;
+  height: 100%;
+  transition: all 0.3s ease;
+  font-size: mindre_font_storlek; /* Justera om det behövs */
+  padding: 10px;
 }
 
 .navbar_btn{
@@ -123,14 +125,15 @@
     }
 
     .navbar_menu.active{
-        background: #131313;
-        top: 100%;
-        opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 99;
-        height: 60vh;
-        font-size: 1.6rem;
-    }
+      background: #131313;
+      top: 100%;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 99;
+      height: 60vh; /* Begränsar höjden till 60% av viewport-höjden */
+      font-size: 1.6rem;
+      overflow-y: auto; /* Aktiverar vertikal skrollning */
+  }
     #navbar_logo{
         padding-left: 25px;
     }
