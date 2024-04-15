@@ -13,8 +13,6 @@
     <title>Kolla Pollen</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="icon.png">
-
-    <link rel="preload" href="/path/to/your/font.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="styles.css" as="style">
    
 
@@ -25,14 +23,13 @@
     
 
     <!-- Google tag (gtag.js) -->
-    <script src="https://www.googletagmanager.com/gtag/js?id=G-1349KJRPEX" async defer></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-1349KJRPEX');
-    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1349KJRPEX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1349KJRPEX');
+</script>
     
 
 
@@ -45,6 +42,8 @@
 
 <body>
     <!-- Navbar-->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+
     <nav class="navbar">
         <div class="navbar_container">
             <a href="#home" id="navbar_logo">KollaPollen.se</a>

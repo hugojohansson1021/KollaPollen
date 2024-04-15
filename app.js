@@ -75,6 +75,18 @@ const mobileMenu = () => {
 menu.addEventListener('click',mobileMenu);
 
 
+// Performance fix
+document.addEventListener("DOMContentLoaded", function() {
+    var script = document.createElement('script');
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-1349KJRPEX";
+    script.async = true;
+    document.body.appendChild(script);
 
-  
+    script.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1349KJRPEX');
+    };
+});
   
