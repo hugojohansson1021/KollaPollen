@@ -63,8 +63,8 @@
   text-decoration: none;
   height: 100%;
   transition: all 0.3s ease;
-  font-size: mindre_font_storlek; /* Justera om det behövs */
-  padding: 10px;
+  font-size: 12px; /* Justera om det behövs */
+  padding: 12px;
 }
 
 .navbar_btn{
@@ -741,7 +741,7 @@ background-size: 100%;
   
 }
 .main_container_product h4 {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: 'Kefa', sans-serif;
   
 }
