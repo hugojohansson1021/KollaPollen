@@ -1,1 +1,5 @@
-https://kollapollen.se/sitemap.xml
+User-agent: *
+Disallow: 
+Allow: /
+
+Sitemap: https://kollapollen.se/sitemap.xml
